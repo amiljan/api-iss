@@ -62,12 +62,9 @@ while True:
             send_mail(message)
             time.sleep(600)
         else:
-            send_mail(test_message)
             time.sleep(180)
     else:
-        send_mail(test_message)
         time.sleep(180)
-
     
 
 
