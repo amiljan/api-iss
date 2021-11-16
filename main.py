@@ -22,12 +22,12 @@ def iss_overhead():
     iss_data = iss_response.json()
     iss_longitude = iss_data["iss_position"]["longitude"]
     iss_latitude = iss_data["iss_position"]["latitude"]
+    #print (iss_latitude + " " + iss_longitude)
     if float(iss_latitude) > my_lat_range[0] and float(iss_latitude) < my_lat_range[1] and float(iss_longitude) > my_long_range[0] and float(iss_longitude) < my_long_range[1]:
         return True
     else:
         return False
 
-iss_overhead()
 
 def dark_outside():
     sunrise_response = requests.get(url=f"https://api.sunrise-sunset.org/json", params = my_location)
@@ -51,7 +51,7 @@ primatelji = ["andro.miljan@gmail.com"]
 message = f'''Subject: ISS je u blizini!\n\n
 Zdravo Andro,
 
-Mrak je, pa ono, pogledaj i vidi dal se vidi.
+Mrak je, pa ono, pogledaj i vidi dal se vidi. PC
 
 
 Pozdravi!
@@ -60,7 +60,7 @@ Pozdravi!
 message2 = f'''Subject: ISS je u blizini!\n\n
 Zdravo Andro,
 
-Nije mrak pa se ne vidi al ono, fyi.
+Nije mrak pa se ne vidi al ono, fyi. PC
 
 
 Pozdravi!
