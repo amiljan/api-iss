@@ -40,12 +40,6 @@ ISS je upravo na koordinatama {iss_latitude},{iss_longitude}. NoÄ‡ je, pa ono, Å
 Pozdravi!
 '''
 
-test_message = f'''Subject: Stanica nije vidljiva\n\n
-
-Nema trenutno ISSa, stanica je na: {iss_latitude},{iss_longitude}
-
-Andro
-'''
 
 def send_mail(text):
     for adresa in primatelji:
@@ -57,14 +51,16 @@ def send_mail(text):
 
 
 while True:
-    if float(time_now) > float(s_set) + 1 or float(time_now) < float(rise) + 1:
-        if iss_latitude in range(my_lat_range[0],my_lat_range[1]) and iss_longitude in range(my_long_range[0],my_long_range[1]):
-            send_mail(message)
-            time.sleep(600)
-        else:
-            time.sleep(180)
-    else:
-        time.sleep(180)
+    send_mail(message)
+    time.sleep(60)
+    #if float(time_now) > float(s_set) + 1 or float(time_now) < float(rise) + 1:
+    #    if iss_latitude in range(my_lat_range[0],my_lat_range[1]) and iss_longitude in range(my_long_range[0],my_long_range[1]):
+    #        send_mail(message)
+    #        time.sleep(600)
+    #    else:
+    #        time.sleep(180)
+    #else:
+    #    time.sleep(180)
     
 
 
