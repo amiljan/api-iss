@@ -12,8 +12,8 @@ iss_latitude = iss_data["iss_position"]["latitude"]
 
 my_lat = 46.164059
 my_long = 15.869980
-my_lat_range = (41,51)
-my_long_range = (10,20)
+my_lat_range = (36,56)
+my_long_range = (5,25)
 my_location = {
     "lat":my_lat,
     "lng":my_long,
@@ -35,7 +35,26 @@ primatelji = ["andro.miljan@gmail.com"]
 message = f'''Subject: ISS je u blizini!\n\n
 Zdravo Andro,
 
-ISS je upravo na koordinatama {iss_latitude},{iss_longitude}. Noć je, pa ono, škicni i vidi dal se vidi.
+ISS je upravo na koordinatama {iss_latitude},{iss_longitude}. Mrak je, pa ono, pogledaj i vidi dal se vidi.
+Sada je {time_now} sati.
+
+Pozdravi!
+'''
+
+message2 = f'''Subject: ISS je u blizini!\n\n
+Zdravo Andro,
+
+ISS je upravo na koordinatama {iss_latitude},{iss_longitude}. Nije mrak pa se ne vidi al ono, fyi.
+Sada je {time_now} sati.
+
+Pozdravi!
+'''
+
+message3 = f'''Subject: Nije sad tu.\n\n
+Zdravo Andro,
+
+ISS je upravo na koordinatama {iss_latitude},{iss_longitude}. 
+Sada je {time_now} sati.
 
 Pozdravi!
 '''
@@ -51,16 +70,13 @@ def send_mail(text):
 
 
 while True:
-    send_mail(message)
+    if iss_latitude in range(my_lat_range[0],my_lat_range[1]) and iss_longitude in range(my_long_range[0],my_long_range[1]):
+        if float(time_now) > float(s_set) + 1 or float(time_now) < float(rise) + 1:
+            send_mail(message)
+        else:
+            send_mail(message2)
+    else:
+        send_mail(message3)
     time.sleep(60)
-    #if float(time_now) > float(s_set) + 1 or float(time_now) < float(rise) + 1:
-    #    if iss_latitude in range(my_lat_range[0],my_lat_range[1]) and iss_longitude in range(my_long_range[0],my_long_range[1]):
-    #        send_mail(message)
-    #        time.sleep(600)
-    #    else:
-    #        time.sleep(180)
-    #else:
-    #    time.sleep(180)
-    
 
 
